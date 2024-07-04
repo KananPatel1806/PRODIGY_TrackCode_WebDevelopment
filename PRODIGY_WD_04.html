@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    
+</head>
+<style>
+    body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+header {
+    background: url('background.jpg') no-repeat center center/cover;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-photo {
+    border-radius: 50%;
+    width: 350px;
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+    color: black;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 10px 0 0 0;
+    color: black;
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.project {
+    margin: 20px 0;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+</style>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <header id="home">
+        <div class="hero">
+            <img src="images/5.jpeg" alt="Your Photo" class="profile-photo">
+            <h1>Welcome to My Portfolio</h1>
+            <p>I'm a web developer with a passion for creating beautiful and functional websites.</p>
+        </div>
+    </header>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi, I'm Kanan Patel, a web developer with experience in HTML, CSS, JavaScript, and various frameworks. I have a background in computer science and a strong passion for coding and problem-solving.</p>
+        <h3>Education</h3>
+        <p>Pursuing Bachelor's Degree in Information Technology from LDRP-ITR , Gandhinagar.</p>
+        <h3>Professional Experience</h3>
+        <p>Worked as a internship at Neptune Technolab as a web developer, where I contributed to various projects and improved my skills in web development.</p>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project 1 : CRUD Operation in PHP</h3>
+            <p>In PHP and MySQL, CRUD operations are commonly used for building dynamic web applications that require the management of data. Create involves inserting new records into a database, while Read retrieves data from the database. Update modifies existing records, and Delete removes records from the database.</p>
+        </div>
+        <div class="project">
+            <h3>Project 2 : YouTube-Transcript-Summarizer</h3>
+            <p>A YouTube transcript summarizer is a tool that automatically generates a summary of the content in a YouTube video by analyzing the transcript of the video's audio.</p>
+        </div>
+        <!-- Add more projects as needed -->
+    </section>
+    
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>If you would like to get in touch, please email me at <a href="mailto:your-email@example.com">your-email@example.com</a>.</p>
+    </section>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.style.backgroundColor = '#555';
+    } else {
+        navbar.style.backgroundColor = '#333';
+    }
+});
+
+    </script>
+</body>
+</html>
