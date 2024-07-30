@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    
+</head>
+<style>
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.tic-tac-toe {
+    text-align: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cell:hover {
+    background-color: #ddd;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#message {
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+</style>
+<body>
+    <div class="tic-tac-toe">
+        <h1>Tic-Tac-Toe</h1>
+        <div class="board" id="board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        <button id="resetBtn">Reset</button>
+        <p id="message"></p>
+    </div>
+   <script>
+                const board = document.getElementById('board');
+            const cells = document.querySelectorAll('.cell');
+            const message = document.getElementById('message');
+            const resetBtn = document.getElementById('resetBtn');
+
+            let currentPlayer = 'X';
+            let gameState = Array(9).fill(null);
+            let gameActive = true;
+
+            const winningConditions = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+
+            const handleCellClick = (e) => {
+                const clickedCell = e.target;
+                const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
+
+                if (gameState[clickedCellIndex] !== null || !gameActive) {
+                    return;
+                }
+
+                gameState[clickedCellIndex] = currentPlayer;
+                clickedCell.textContent = currentPlayer;
+
+                if (checkWin()) {
+                    message.textContent = `Player ${currentPlayer} Wins!`;
+                    gameActive = false;
+                } else if (gameState.every(cell => cell !== null)) {
+                    message.textContent = 'Game Draw!';
+                    gameActive = false;
+                } else {
+                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                    message.textContent = `Player ${currentPlayer}'s turn`;
+                }
+            };
+
+            const checkWin = () => {
+                return winningConditions.some(condition => {
+                    return condition.every(index => {
+                        return gameState[index] === currentPlayer;
+                    });
+                });
+            };
+
+            const resetGame = () => {
+                gameState = Array(9).fill(null);
+                gameActive = true;
+                currentPlayer = 'X';
+                message.textContent = `Player ${currentPlayer}'s turn`;
+                cells.forEach(cell => cell.textContent = '');
+            };
+
+            cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+            resetBtn.addEventListener('click', resetGame);
+
+            message.textContent = `Player ${currentPlayer}'s turn`;
+
+   </script>
+</body>
+</html>
